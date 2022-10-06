@@ -28,7 +28,6 @@ function setNumber(valor,op){
 function operaciones(operacion){
   datos = document.getElementById("txt").value;
   num= datos.split(/\+|\-|\/|\*/)
-  numero=""
   if(resultado==null && num.length==2 && num[0]!=='' &&num[1]!==''){
     num1=parseFloat(num[0]);
     num2=parseFloat(num[1]);
@@ -53,6 +52,7 @@ function operaciones(operacion){
         document.getElementById("txt").value = ("Error");
     }
     historial.push({operacion: datos, resultado: resultado});
+    numero=resultado;
     contenido.innerHTML += "<li>Operacion: "+datos +" = "+resultado+"</li>"
     resultado =null;
   }
