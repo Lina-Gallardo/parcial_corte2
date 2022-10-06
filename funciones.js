@@ -4,16 +4,9 @@ let numero = ""
 let operacion;
 let resultado;
 let contenido = document.getElementById("cLista");
-// const history=()=>{
-//   let oper = "";
-//   for(var i=0; i<historial.length; i++){
-//     oper +="<li>Operacion: "+historial[i].operacion +" = "+historial[i].resultado+"</li>";
-//   }
-//   contenido.innerHTML = oper;
-// }
+
 function ac(){
   numero="";
-  limpiar();
   document.getElementById("txt").value = "";
 }
 function limpiar(){
@@ -25,9 +18,11 @@ function setNumber(valor,op){
   if(op!==null){
     operacion = op;
   }
-  valor = document.getElementById("txt").value
-  document.getElementById("txt").value = numero;
-
+  if((/\.{2}|\+{2}|\-{2}|\/{2}|\*{2}/.test(numero))){
+    numero = numero.slice(0, -1)
+  }else{
+    document.getElementById("txt").value = numero;
+  }
 }
 
 function operaciones(operacion){
@@ -51,7 +46,7 @@ function operaciones(operacion){
         document.getElementById("txt").value = (resultado);
         break;
       case 3:
-        resultado = num1 / num2;
+        num2!=0?resultado = num1 / num2 : resultado = "No se puede dividir por 0"
         document.getElementById("txt").value = (resultado);
         break;
       default:
